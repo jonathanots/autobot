@@ -9,9 +9,11 @@ class HomeActivity extends Activity {
 
   late Browser browser;
 
+  final app = MainActivity();
+
   @override
   void initState() async {
-    browser = await MainActivity.browser;
+    browser = await app.browser;
 
     print('$tag Started');
     super.initState();

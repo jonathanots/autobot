@@ -1,7 +1,7 @@
 import 'package:puppeteer/puppeteer.dart';
 
 import '../../../classes/activity.dart';
-import '../../../main.dart';
+import '../../../classes/main_activity.dart';
 
 class HomeInputPackageElement extends Activity {
   final String tag = 'HomeInputPackageElement';
@@ -9,6 +9,8 @@ class HomeInputPackageElement extends Activity {
   final Page page;
 
   String searchText;
+
+  final app = MainActivity();
 
   HomeInputPackageElement(this.page, this.searchText);
 
