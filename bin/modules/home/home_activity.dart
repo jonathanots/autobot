@@ -26,7 +26,7 @@ class HomeActivity extends Activity {
     var page = await browser.newPage();
     await page.goto('https://pub.dev/', wait: Until.networkIdle);
 
-    HomeInputPackageElement(page, 'uuid').start();
+    HomeInputPackageElement(page, 'get_it').start();
     super.build();
   }
 }

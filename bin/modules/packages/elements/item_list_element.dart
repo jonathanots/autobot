@@ -1,17 +1,22 @@
 import 'package:puppeteer/puppeteer.dart';
 
 import '../../../classes/activity.dart';
+import '../../../classes/logger.dart';
 
 class PackageItemListElement extends Activity {
-  final String tag = 'HomeInputPackageElement';
+  final String tag = 'PackageItemListElement';
 
   final Page page;
+
+  late String searchText;
 
   PackageItemListElement(this.page);
 
   @override
   void initState() async {
     print('$tag Started');
+    searchText = args;
+
     super.initState();
   }
 
@@ -19,9 +24,11 @@ class PackageItemListElement extends Activity {
   void build() async {
     print('$tag Building');
 
-    await page.evaluate("""() => document.querySelector('a[href="/packages/$args"]').click()""");
+    await page.evaluate("""() => document.querySelector('a[href="/packages/$searchText"]').click()""");
 
     await Future.delayed(Duration(seconds: 5));
+
+    Logger('Sucess').start();
 
     print("Clicked");
 

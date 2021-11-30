@@ -1,3 +1,6 @@
+import 'dart:developer' as dev;
+import 'dart:io';
+
 import '../interfaces/log.dart';
 import 'activity.dart';
 
@@ -31,10 +34,22 @@ class Logger extends Activity {
 
   @override
   void build() {
+    String? log;
     if (format == Format.standart) {
+      log = "$title/$level/${DateTime.now().toIso8601String()} - $message";
     } else if (format == Format.dense) {
+      log = "${DateTime.now().toIso8601String()} - $message";
     } else if (format == Format.deep) {
+      log = "$title/$level  - $message - ${DateTime.now().toIso8601String()} - $code";
     } else {}
+
+    if (log != null) {
+      if (debugMode) dev.log(log);
+
+      File file = File('static/logs/log.log');
+
+      file.writeAsString('\n' + log, mode: FileMode.append);
+    }
 
     super.build();
   }

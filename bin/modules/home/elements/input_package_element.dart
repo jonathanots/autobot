@@ -24,7 +24,6 @@ class HomeInputPackageElement extends Activity {
   void build() async {
     print('$tag Building');
 
-    await page.evaluate("() => document.getElementsByClassName('input')");
     await page.evaluate("() => document.getElementsByClassName('input')[0].value ='$searchText'");
     await page.evaluate("() => document.getElementsByClassName('input')[0].form.submit()");
 

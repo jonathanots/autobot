@@ -1,5 +1,4 @@
 import '../errors/navigator_errors.dart';
-import '../interfaces/activity.dart';
 import '../types/types.dart';
 import 'activity.dart';
 import 'route.dart';
@@ -41,6 +40,7 @@ class Navigator extends Activity {
 
     setCurrentRoute(run);
     routes.add(run);
+    //Update start to dynamic
     return run.module.start(args);
   }
 
@@ -48,10 +48,9 @@ class Navigator extends Activity {
     Route run = findRoute(to);
 
     removeRoute(currentRoute);
-    routes.removeWhere((element) => element.path == currentRoute.path);
     setCurrentRoute(run);
     routes.add(run);
-    run.module.start(args);
+    return run.module.start(args);
   }
 
   void removeRoute(Route r) {
