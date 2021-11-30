@@ -36,15 +36,15 @@ class Navigator extends Activity {
     throw RouteNotFound();
   }
 
-  void pushNamed(String to, {dynamic args}) {
+  Future<dynamic> pushNamed(String to, {dynamic args}) async {
     Route run = findRoute(to);
 
     setCurrentRoute(run);
     routes.add(run);
-    run.module.start(args);
+    return run.module.start(args);
   }
 
-  void pushReplacementNamed(String to, {dynamic args}) {
+  Future<dynamic> pushReplacementNamed(String to, {dynamic args}) async {
     Route run = findRoute(to);
 
     removeRoute(currentRoute);

@@ -37,7 +37,7 @@ class MainActivity {
     return await puppeteer.launch(headless: false);
   }
 
-  void build() {
+  void build() async {
     print('Main Activity Building');
     MainActivity.instance.to.pushNamed(initialRoute);
   }
