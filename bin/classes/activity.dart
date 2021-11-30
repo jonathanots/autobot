@@ -2,10 +2,15 @@ import '../interfaces/activity.dart';
 
 class Activity implements IActivity {
   final String? key;
+  late dynamic args;
 
   Activity({
     this.key,
-  }) {
+  });
+
+  @override
+  void start([dynamic arguments]) {
+    args = arguments;
     initState();
   }
 
@@ -15,12 +20,8 @@ class Activity implements IActivity {
   }
 
   @override
-  void build() {
-    // TODO: implement build
-  }
+  void build() {}
 
   @override
-  void dispose() {
-    // TODO: implement dispose
-  }
+  void dispose() {}
 }

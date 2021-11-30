@@ -1,6 +1,6 @@
-import '../interfaces/activity.dart';
+import 'activity.dart';
 
-class Route<T extends IActivity> {
+class Route<T extends Activity> {
   String path;
   T module;
 

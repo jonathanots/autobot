@@ -38,7 +38,7 @@ class HomeInputPackageElement extends Activity {
 
     if (nextPage) {
       print("Done");
-      app.to.pushNamed('/packages');
+      app.to.pushNamed('/packages', args: searchText);
     }
     super.build();
   }

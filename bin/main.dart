@@ -6,7 +6,6 @@ import 'modules/packages/package_activity.dart';
 
 void main() async {
   runApp(MainActivity(
-    home: HomeActivity(),
     initialRoute: Navigator.initialRoute,
     onGenerateRoutes: () {
       return {

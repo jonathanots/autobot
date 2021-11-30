@@ -5,7 +5,7 @@ import '../../classes/main_activity.dart';
 import 'elements/item_list_element.dart';
 
 class PackageActivity extends Activity {
-  final String tag = 'PubDartActivity';
+  final String tag = 'PackageActivity';
 
   late Browser browser;
 
@@ -27,7 +27,7 @@ class PackageActivity extends Activity {
 
     final page = pages[1];
 
-    PackageItemListElement(page);
+    PackageItemListElement(page).start(args);
     super.build();
   }
 }

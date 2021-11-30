@@ -5,7 +5,7 @@ import '../../classes/main_activity.dart';
 import 'elements/input_package_element.dart';
 
 class HomeActivity extends Activity {
-  final String tag = 'PubDartActivity';
+  final String tag = 'HomeActivity';
 
   late Browser browser;
 
@@ -26,7 +26,7 @@ class HomeActivity extends Activity {
     var page = await browser.newPage();
     await page.goto('https://pub.dev/', wait: Until.networkIdle);
 
-    HomeInputPackageElement(page, 'uuid');
+    HomeInputPackageElement(page, 'uuid').start();
     super.build();
   }
 }

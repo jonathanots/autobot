@@ -19,7 +19,7 @@ class PackageItemListElement extends Activity {
   void build() async {
     print('$tag Building');
 
-    await page.click("""() => document.querySelector('a[href="/packages/puppeteer"]')""");
+    await page.evaluate("""() => document.querySelector('a[href="/packages/$args"]').click()""");
 
     await Future.delayed(Duration(seconds: 5));
 

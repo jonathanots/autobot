@@ -1,7 +1,6 @@
 import 'package:puppeteer/puppeteer.dart';
 
 import '../types/types.dart';
-import 'activity.dart';
 import 'navigator.dart';
 
 runApp(MainActivity main) {
@@ -12,11 +11,7 @@ class MainActivity {
   static MainActivity? _instance;
   static MainActivity get instance => _instance!;
 
-  Activity? home;
-
   String initialRoute;
-
-  GenerateRoutes? onGenerateRoutes;
 
   Navigator _to = Navigator();
 
@@ -27,29 +22,23 @@ class MainActivity {
   Future<Browser> get browser async => await _browser!;
 
   factory MainActivity({
-    Activity? home,
     String initialRoute = '/',
     GenerateRoutes? onGenerateRoutes,
   }) {
-    return _instance ??= MainActivity._internal(home, initialRoute, onGenerateRoutes);
+    return _instance ??= MainActivity._internal(initialRoute, Navigator(key: 'MainNavigator', onGenerateRoutes: onGenerateRoutes), _launchPuppeter());
   }
 
-  MainActivity._internal(this.home, this.initialRoute, this.onGenerateRoutes) {
+  MainActivity._internal(this.initialRoute, this._to, this._browser) {
     _instance = this;
-    _instance!._to = Navigator(key: 'MainNavigator', onGenerateRoutes: onGenerateRoutes);
-    _instance!._browser = _launchPuppeter();
   }
 
-  Future<Browser> _launchPuppeter() async {
+  static Future<Browser> _launchPuppeter() async {
     // Download the Chromium binaries, launch it and connect to the "DevTools"
     return await puppeteer.launch(headless: false);
   }
 
-  // static Future<Browser> get browser async => await _launchPuppeter();
-
   void build() {
-    print('Main Activiy Building');
-    // if (_to != null) _to!.pushNamed(initialRoute ?? '/');
+    print('Main Activity Building');
     MainActivity.instance.to.pushNamed(initialRoute);
   }
 }

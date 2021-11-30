@@ -4,12 +4,11 @@ version: 1.0.0
 # homepage: https://www.example.com
 
 environment:
-  sdk: '>=2.15.0-119.0.dev <3.0.0'
+  sdk: '>=2.14.4 <3.0.0'
 
 
 dependencies:
 #   path: ^1.8.0
-  webdriver: ^3.0.0
   puppeteer: ^2.3.0
   
 
